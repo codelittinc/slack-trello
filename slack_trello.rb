@@ -16,9 +16,10 @@ class SlackCommands
     ENV["SLACK_CARD_COMMAND_TOKEN"]
   ]
 
-  def card
-    response = SlackTrello::CardCommand.new(params, ENV["SLACK_WEBHOOK_URL"]).run
-    render text: response
+  def work
+    response = SlackTrello::WorkCommand.new(params, ENV["SLACK_WEBHOOK_URL"]).run
+    # TODO:format like sinatra
+    # render text: response
   end
 
   private 
@@ -28,5 +29,7 @@ class SlackCommands
       #render text: "Unauthorized", status: :unauthorized
     #end
   end
+
+  
 
 end
