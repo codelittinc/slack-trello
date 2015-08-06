@@ -1,0 +1,23 @@
+# This is our DEVELOPMENT dockerfile.
+#
+# This uses Codelitt's Ruby 2.2 image found at:
+# https://github.com/codelittinc/dockerfiles/blob/master/ruby/Dockerfile
+FROM codelittinc/ruby:2.2
+MAINTAINER Codelitt, Inc.
+
+# Mount any shared volumes from the host to container @ /share
+VOLUME ["/share"]
+
+# Install dependencies and sinatra
+RUN apt-get update
+RUN apt-get install -y python-software-properties \
+  python g++ make software-properties-common \
+  qt5-default libqt5webkit5-dev 
+RUN gem install --no-rdoc --no-ri sinatra \
+  && gem install --no-rdoc --no-ri thin
+
+EXPOSE 3000
+
+WORKDIR /share
+
+CMD ["/bin/bash", "-l"]
