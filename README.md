@@ -19,7 +19,7 @@ For now see [this tutorial](http://www.medivo.com/blog/slack-slash-command-to-tr
 
 ##Trello ENV keys
 
-This app uses the `[ruby-trello](https://github.com/jeremytregunna/ruby-trello)` gem for communicating with Trello
+This app uses the [`ruby-trello`](https://github.com/jeremytregunna/ruby-trello) gem for communicating with Trello
 
 1. Get your API keys from [trello.com/app-key](https://trello.com/app-key). The `key` is your TRELLO_DEVELOPER_PUBLIC_KEY for your ENV variables.
 2. Visit the URL [trello.com/1/authorize], with the following GET parameters:
