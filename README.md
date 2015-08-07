@@ -1,10 +1,21 @@
 Slack -> Trello Card Sinatra app
 ========
 
+#ENV variables
+
 You'll need a .env file created for the [dotenv gem](https://github.com/bkeepers/dotenv). 
 
+It should look like:
+```
+TRELLO_DEVELOPER_PUBLIC_KEY=your_api_key_here
+TRELLO_MEMBER_TOKEN=your_api_key_here
+SLACK_WEBHOOK_URL=your_api_key_here
+SLACK_WORK_COMMAND_TOKEN=your_api_key_here
+```
 
 ##Slack ENV keys
+
+For now see [this tutorial](http://www.medivo.com/blog/slack-slash-command-to-trello/) in the Configuring Slack section to see how to setup your SLACK keys. 
 
 ##Trello ENV keys
 
