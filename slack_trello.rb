@@ -33,5 +33,13 @@ class SlackTrelloApp < Sinatra::Application
   post '/bug' do
     return work.to_json
   end
+
+  post '/create-card' do
+    return create_card.to_json
+  end
+
+  post '/retro' do
+    return retro.to_json
+  end
 end
 
