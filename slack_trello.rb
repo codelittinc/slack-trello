@@ -3,7 +3,7 @@ require 'sinatra'
 require 'dotenv'
 Dotenv.load
 require 'json'
-
+require 'slack_trello'
 
 class SlackTrelloApp < Sinatra::Application
 
@@ -17,13 +17,12 @@ class SlackTrelloApp < Sinatra::Application
   ]
 
   def work
-    return "blah blah"
-    #return response = SlackTrello::WorkCommand.new(params, ENV["SLACK_WEBHOOK_URL"]).run
+    return response = SlackTrello::WorkCommand.new(params, ENV["SLACK_WEBHOOK_URL"]).run
     # TODO:format like sinatra
     # render text: response
   end
   
-  get '/slack/work' do
+  post '/bug' do
     return work.to_json
   end
 
