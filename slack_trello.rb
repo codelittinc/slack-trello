@@ -23,10 +23,5 @@ class SlackTrelloApp < Sinatra::Application
   post '/bug' do
     return work.to_json
   end
-
-  get '/' do
-    "hello world"
-  end
-
 end
 
