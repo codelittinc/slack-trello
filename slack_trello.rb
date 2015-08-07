@@ -9,11 +9,11 @@ class SlackTrelloApp < Sinatra::Application
 
   #TODO: Need to test this
   before do
-    return 401 unless WHITELIST_TOKENS.include?(request["token"])
+    error 401 unless WHITELIST_TOKENS.include?(params[:token])
   end
 
   WHITELIST_TOKENS = [
-    ENV["SLACK_CARD_COMMAND_TOKEN"]
+    ENV["SLACK_WORK_COMMAND_TOKEN"]
   ]
 
   def work
@@ -22,6 +22,10 @@ class SlackTrelloApp < Sinatra::Application
   
   post '/bug' do
     return work.to_json
+  end
+
+  get '/' do
+    "haha your blcok doesn't work"
   end
 end
 
