@@ -13,13 +13,23 @@ class SlackTrelloApp < Sinatra::Application
   end
 
   WHITELIST_TOKENS = [
-    ENV["SLACK_WORK_COMMAND_TOKEN"]
-  ]
+    ENV["SLACK_WORK_COMMAND_TOKEN"],
+    ENV["SLACK_CREATE_CARD_COMMAND_TOKEN"],
+    ENV["SLACK_RETRO_COMMAND_TOKEN"]
+  ].compact
 
   def work
-    return response = SlackTrello::WorkCommand.new(params, ENV["SLACK_WEBHOOK_URL"]).run
+    SlackTrello::WorkCommand.new(params, ENV["SLACK_WEBHOOK_URL"]).run
   end
-  
+
+  def create_card
+    SlackTrello::CreateCardCommand.new(params, ENV["SLACK_WEBHOOK_URL"]).run
+  end
+
+  def retro
+    SlackTrello::RetroCommand.new(params, ENV["SLACK_WEBHOOK_URL"]).run
+  end
+
   post '/bug' do
     return work.to_json
   end
