@@ -3,33 +3,30 @@ require 'sinatra'
 require 'dotenv'
 Dotenv.load
 require 'json'
+require 'slack_trello'
 
+class SlackTrelloApp < Sinatra::Application
 
-class SlackCommands
-
-  #TODO: need to sort out whether to do auth in class or in request
-  #before do
-  #  :slash_command_auth
-  #end
+  #TODO: Need to test this
+  before do
+    return 401 unless WHITELIST_TOKENS.include?(request["token"])
+  end
 
   WHITELIST_TOKENS = [
     ENV["SLACK_CARD_COMMAND_TOKEN"]
   ]
 
   def work
-    response = SlackTrello::WorkCommand.new(params, ENV["SLACK_WEBHOOK_URL"]).run
-    # TODO:format like sinatra
-    # render text: response
+    return response = SlackTrello::WorkCommand.new(params, ENV["SLACK_WEBHOOK_URL"]).run
   end
-
-  private 
-
-  def slash_command_auth
-    #unless WHITELIST_TOKENS.include?(params[:token])
-      #render text: "Unauthorized", status: :unauthorized
-    #end
-  end
-
   
+  post '/bug' do
+    return work.to_json
+  end
+
+  get '/' do
+    "hello world"
+  end
 
 end
+
