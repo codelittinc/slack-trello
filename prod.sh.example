@@ -3,11 +3,11 @@
 set -e
 
 cp Dockerfile.production Dockerfile
-docker build -t codelittinc/slack-trello .
+docker build -t YOUR_REGISTRY/slack-trello .
 rm Dockerfile
-docker push codelittinc/slack-trello:latest
+docker push YOUR_REGISTRY/slack-trello:latest
 
 #Pipe commands from this file into the server
 #Example of the contents of this file are in prod_server.sh.example
-cat prod_server.sh | ssh@SERVER_IP
+cat prod_server.sh | ssh@YOUR_SERVER_IP
 

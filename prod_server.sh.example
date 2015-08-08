@@ -1,10 +1,10 @@
-sudo docker pull your_registry_here/slack-trello:latest
+docker pull your_registry_here/slack-trello:latest
 
-sudo docker stop slack-trello-prod
+docker stop slack-trello-prod
 
-sudo docker rm slack-trello-prod
+docker rm slack-trello-prod
 
-sudo docker run --name slack-trello-prod \
+docker run --name slack-trello-prod \
   -p 3000:3000 \
   -e TRELLO_DEVELOPER_PUBLIC_KEY=your_key_here \
   -e TRELLO_MEMBER_TOKEN=your_token_here \
@@ -12,5 +12,5 @@ sudo docker run --name slack-trello-prod \
   -e SLACK_WORK_COMMAND_TOKEN=your_token_here \
   -d codelittinc/slack-trello:lastest 
 
-sudo docker start slack-trello-prod
+docker start slack-trello-prod
 
