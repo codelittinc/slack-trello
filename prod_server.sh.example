@@ -1,4 +1,4 @@
-docker pull your_registry_here/slack-trello:latest
+docker pull YOUR_DOCKER_USER_NAME/slack-trello:latest
 
 docker stop slack-trello-prod
 
@@ -10,7 +10,7 @@ docker run --name slack-trello-prod \
   -e TRELLO_MEMBER_TOKEN=your_token_here \
   -e SLACK_WEBHOOK_URL=your_url_here \
   -e SLACK_WORK_COMMAND_TOKEN=your_token_here \
-  -d codelittinc/slack-trello:lastest 
+  -d YOUR_DOCKER_USER_NAME/slack-trello:latest 
 
 docker start slack-trello-prod
 

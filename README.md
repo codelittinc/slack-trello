@@ -25,6 +25,7 @@ SLACK_WORK_COMMAND_TOKEN=your_api_key_here
 
 Productions keys are stored in the prod_server.sh.example. You'll need to change the keys to match yours and also remove the example extension. (`mv prod_server.sh.example prod_server.sh`)
 
+
 ##Slack ENV keys
 
 For now see [this tutorial](http://www.medivo.com/blog/slack-slash-command-to-trello/) from [MrPowers](https://github.com/MrPowers) in the Configuring Slack section to see how to setup your SLACK keys. 
@@ -45,11 +46,16 @@ This app uses the [`ruby-trello`](https://github.com/jeremytregunna/ruby-trello)
 
 #Deployment
 
+A few notes about how to set up your server before running through this. Nginx runs on the server. I could create a docker container for it, but decided to leave it up to individuals. 
+
+Your server will need public key login for this all to work. You'll also want to run `docker login` on your server before running through these commands. Docker doesn't ask you for login on a pull so the command will continue to fail until you login once at which point it's stored in config. 
+
 1. Change the `SERVER_IP` in prod.sh. #TODO: Make this an ENV variable
 2. Change the keys in the prod_server.sh
 3. Change the registry for docker in `prod.sh` to your registry.
 3. Run `./prod.sh`
 4. Rember to fix your Slash command url that I'm sure you've been testing with once deployed. 
+
 
 #Contributing
 
